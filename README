@@ -1,0 +1,25 @@
+//Form Changes v1.0 2011
+//by Paul Ser -- paul.work4281@gmail.com
+
+FormChanges - simple Jquery plugin to track changes of form inputs.
+
+Example of typical usage - you have an ajax form and some "save" buttons 
+and you want to enable that buttons when some of the form's fields was changed;
+
+Of course you may use plugins like dirtyForm for that,
+but those are high-weight for such a simple task.   
+
+$(document).ready(function(){
+    var savebuttons = (".save_buttons");
+    var f_changes =  form.formChanges({
+      onChangeVals: function() { save_buttons.removeAttr('disabled');},
+      onRestoreVals: function(){ save_buttons.attr('disabled', 'disabled');}
+    });
+    savebuttons.mouseup(function(){
+      f_changes.saveDefaults();
+      form.submit();
+      savebuttons.attr('disabled', 'disabled');
+    });
+});
+
+
